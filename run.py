@@ -2,6 +2,7 @@ import random
 import american_countries
 import asian_countries
 import european_countries
+import hangman_game
 
 def game_menu():
     """
@@ -22,7 +23,6 @@ def game_menu():
     print("\nAre you ready to play?")
     print(f"\n1. Play The Game! \n2. How To Play")
     choice = input("\nEnter your choice (1 or 2):\n")
-    
 
 
 def get_instructions():
