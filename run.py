@@ -4,6 +4,8 @@ import asian_countries
 import european_countries
 import hangman_game
 import os
+import colorama
+from colorama import Fore
 
 def game_menu():
     """
@@ -40,18 +42,17 @@ def menu_validate_choice(data, validate_menu):
     """
     try:
         if data not in validate_menu:
-            raise valueError(
-                print(f"You've entered: {data}\n"
-                f"Please enter a number between 1 and 2")
+            raise ValueError(
+                f"You've entered: {data}"
             )
     except ValueError as e:
-        print(
+            print(Fore.LIGHTRED_EX +
               f"\nInvalid data: {e}\n"
               + "Please enter again between 1 and 2...\n"
-              )
-        return False
+              + Fore.RESET)
+            return False
     else:
-        return True
+            return True
 
 def get_instructions():
     os.system('cls||clear')
@@ -66,6 +67,17 @@ def get_instructions():
         If all parts of the hangman is shown you lose.
         If you guess the country correctly you win!
     """)
+    # While loop to make sure user enters yes to continue to the next page
+    while True:
+        raw_input = input("Enter 'yes' to continue to the game:\n")
+        try:
+            if raw_input == "yes":
+                continent()
+                break
+        except ValueError:
+                print("Please enter 'yes to continue...")
+                continue
+
 
 
 def continent():
