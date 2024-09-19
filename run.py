@@ -106,12 +106,17 @@ def continent():
 
 
 
-def generate_country():
+def generate_country(number):
     """
     Function to generate a random country from the chosen continent by user.
     The function randomly chooses a country from the continent files that the player has to guess in the game.
     """
-    pass
+    if number == 1:
+        return random.choice(american_countries.american_countries).upper()
+    if number == 2:
+        return random.choice(asian_countries.asian_countries).upper()
+    if number == 3:
+        return random.choice(european_countries.european_countries).upper()
 
 def guess_letter():
     """
@@ -125,12 +130,6 @@ def validate_letter():
     Validates whether the guessed letter is present in the secret country.
     This function checks if the guessed letter exists in the current country 
     being guessed and make sures the user entered a singular letter and no other character.
-    """
-    pass
-
-def get_back_menu():
-    """
-    Function to redirect user back to game menu.
     """
     pass
 
