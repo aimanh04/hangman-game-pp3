@@ -139,7 +139,19 @@ def play_again():
     This function prompts the player to choose whether to restart the game or quit 
     after winning or losing.
     """
-    pass
+    while True:
+        try:
+            print("Do you want to play another round?\n")
+            restart_game = input("Y or N: ").upper()
+            if restart_game == "Y":
+                print("Let's Play!\n")
+                break
+            elif restart_game == "N":
+                print("Thank you for playing!\n")
+                break
+        except ValueError:
+            print("Please Enter: Y or N\n")
+
 
 def main():
     """
