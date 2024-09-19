@@ -3,6 +3,7 @@ import american_countries
 import asian_countries
 import european_countries
 import hangman_game
+import os
 
 def game_menu():
     """
@@ -22,19 +23,76 @@ def game_menu():
     """)
     print("\nAre you ready to play?")
     print(f"\n1. Play The Game! \n2. How To Play")
-    choice = input("\nEnter your choice (1 or 2):\n")
+    valid_choice = False
+    while valid_choice is False:
+        choice = input("\nEnter your choice (1 or 2):\n")
+        valid_choice = menu_validate_choice(choice, ["1", "2"])
+    if int(choice) == 1:
+        category = continent()
+    elif int(choice) == 2:
+        get_instructions()
 
+def menu_validate_choice(data, validate_menu):
+    """
+    Validate the choice from user in menu when they enter an integer
+    between 1 or 2. Following Try statement will raise a error if the
+    entered data isn't a integer or a number between 1 or 2.
+    """
+    try:
+        if data not in validate_menu:
+            raise valueError(
+                print(f"You've entered: {data}\n"
+                f"Please enter a number between 1 and 2")
+            )
+    except ValueError as e:
+        print(
+              f"\nInvalid data: {e}\n"
+              + "Please enter again between 1 and 2...\n"
+              )
+        return False
+    else:
+        return True
 
 def get_instructions():
-    pass
+    os.system('cls||clear')
+
+    print(f"""
+        You have three options of continents to choose from.
+        Your goal is to guess the country by the chosen continent.
+
+        If you guess a letter correctly, it will appear in the correct position in the word.
+        If you guess incorrectly, a part of the hangman's body will be added to the drawing.
+
+        If all parts of the hangman is shown you lose.
+        If you guess the country correctly you win!
+    """)
+
 
 def continent():
     """
     Function to manage the selection of continent by user to play the game.
-    This function presents a list of continents for the player to choose from and 
+    This function presents a list of continents for the player to choose from and
     filter countries or other elements by the chosen continent.
     """
-    pass
+    os.system('cls||clear')
+
+    while True:
+        try:
+            user_choice = int(input(
+                "Select one continent from the following options to play with:\n\n"
+                " 1: America\n"
+                " 2: Asia\n"
+                " 3: Europe\n\n"
+                " Enter a number between 1 and 3: "))
+            if 1 <= user_choice <= 3:
+                break
+            else:
+                print('Ops! You entered an invalid number. Try again\n\n')
+        except ValueError:
+            print('Please enter a number between 1 and 3.\n\n')
+    return user_choice
+
+
 
 def generate_country():
     """
@@ -80,5 +138,6 @@ def main():
     It keeps the game running in a loop until the player chooses to quit.
     """
     game_menu()
+    
 
 main()
