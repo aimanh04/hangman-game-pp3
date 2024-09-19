@@ -8,6 +8,24 @@ def game_menu():
     Function to display when you first run the program it display game menu screen.
     The menu has the options to display instructions or play the game by choosing continent.
     """
+    print(r"""
+     _   _    _    _   _  ____ __  __    _    _   _ 
+| | | |  / \  | \ | |/ ___|  \/  |  / \  | \ | |
+| |_| | / _ \ |  \| | |  _| |\/| | / _ \ |  \| |
+|  _  |/ ___ \| |\  | |_| | |  | |/ ___ \| |\  |
+|_|_|_/_/ _ \_\_| \_|\____|_|  |_/_/   \_\_| \_|
+ / ___|  / \  |  \/  | ____|                    
+| |  _  / _ \ | |\/| |  _|                      
+| |_| |/ ___ \| |  | | |___                     
+ \____/_/   \_\_|  |_|_____|                                               
+    """)
+    print("\nAre you ready to play?")
+    print(f"\n1. Play The Game! \n2. How To Play")
+    choice = input("\nEnter your choice (1 or 2):\n")
+    
+
+
+def get_instructions():
     pass
 
 def continent():
@@ -61,4 +79,6 @@ def main():
     selection, country generation, letter guessing, and checking for win/loss conditions.
     It keeps the game running in a loop until the player chooses to quit.
     """
-    pass
+    game_menu()
+
+main()
