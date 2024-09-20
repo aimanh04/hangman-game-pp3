@@ -7,6 +7,10 @@ import os
 import colorama
 from colorama import Fore
 
+# Function to clear terminal screen
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def game_menu():
     """
     Function to display when you first run the program it display game menu screen.
@@ -25,12 +29,14 @@ def game_menu():
     """)
     print("\nAre you ready to play?")
     print(f"\n1. Play The Game! \n2. How To Play")
+
     valid_choice = False
     while valid_choice is False:
         choice = input("\nEnter your choice (1 or 2):\n")
         valid_choice = menu_validate_choice(choice, ["1", "2"])
+
     if int(choice) == 1:
-        category = continent()
+        start_game()
     elif int(choice) == 2:
         get_instructions()
 
@@ -55,7 +61,7 @@ def menu_validate_choice(data, validate_menu):
             return True
 
 def get_instructions():
-    os.system('cls||clear')
+    clear_screen()
 
     print(f"""
         You have three options of continents to choose from.
@@ -69,14 +75,22 @@ def get_instructions():
     """)
     # While loop to make sure user enters yes to continue to the next page
     while True:
-        raw_input = input("Enter 'yes' to continue to the game:\n")
-        try:
-            if raw_input == "yes":
-                continent()
-                break
-        except ValueError:
-                print("Please enter 'yes to continue...")
-                continue
+        raw_input = input("Enter 'yes' to continue to the game:\n").lower()
+        if raw_input == "yes":
+            start_game()  # Start the game after instructions
+            break
+        else:
+            print("Please enter 'yes' to continue...")
+
+def start_game():
+    """
+    This function handles the continent selection, country generation
+    and starts the letter guessing process.
+    """
+    clear_screen()
+    user_choice = continent()
+    word = generate_country(user_choice)
+    validate_letter(word)
 
 
 
@@ -159,37 +173,37 @@ def validate_letter(word):
         current_display = ''.join([char if char in correct_guesses else '_' for char in word])
         print(current_display)
 
-    letter = get_singular_letter()
+        letter = get_singular_letter()
 
-    # Check if the letter was already guessed
-    if letter in correct_guesses.union(incorrect_guesses):
-        print("You've already tried this letter. Try another one!")
-        continue
+        # Check if the letter was already guessed
+        if letter in correct_guesses.union(incorrect_guesses):
+            print("You've already tried this letter. Try another one!")
+            continue
 
-    # If the guessed letter is in the word
-    if letter in word:
-        #Add Fore Color!!!!!
-        print(f"Correct! The letter '{letter}' is in the word.")
-        correct_guesses.add(letter)
-        print(f"Letters you've tried so far: {''.join(correct_guesses | incorrect_guesses)}\n")
+        # If the guessed letter is in the word
+        if letter in word:
+            #Add Fore Color!!!!!
+            print(f"Correct! The letter '{letter}' is in the word.")
+            correct_guesses.add(letter)
+            print(f"Letters you've tried so far: {''.join(correct_guesses | incorrect_guesses)}\n")
 
-        if len(correct_guesses) == len(set(word.replace(' ', ''))):
-            print(f"Congratulations, you've won! The word was: {word}\n")
-            play_again()
+            if len(correct_guesses) == len(set(word.replace(' ', ''))):
+                print(f"Congratulations, you've won! The word was: {word}\n")
+                play_again()
 
-    # If the guessed letter is not in the word
-    else:
-        #Add Fore Color!!!
-        print(f"Wrong guess! The letter '{letter}' is not in the word.")
-        incorrect_guesses.add(letter) # Add letter to the set of incorrect guesses
-        remaining_attempts -= 1
-        print(f"Letters you've tried so far: {''.join(correct_guesses | incorrect_guesses)}\n")
-        print(hangman_game.game[remaining_attempts]) # Show hangman
+        # If the guessed letter is not in the word
+        else:
+            #Add Fore Color!!!
+            print(f"Wrong guess! The letter '{letter}' is not in the word.")
+            incorrect_guesses.add(letter) # Add letter to the set of incorrect guesses
+            remaining_attempts -= 1
+            print(f"Letters you've tried so far: {''.join(correct_guesses | incorrect_guesses)}\n")
+            print(hangman_game.game[remaining_attempts]) # Show hangman
 
-        # If the player has no attempts left, they lose
-        if remaining_attempts == 0:
-            print(f"Sorry, you lost. The word was: {word}\n")
-            play_again()
+            # If the player has no attempts left, they lose
+            if remaining_attempts == 0:
+                print(f"Sorry, you lost. The word was: {word}\n")
+                play_again()
 
 
 def play_again():
