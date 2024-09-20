@@ -124,20 +124,62 @@ def generate_country(number):
     if number == 3:
         return random.choice(european_countries.european_countries).upper()
 
-def guess_letter():
-    """
-    Prompts the player to guess a letter as part of a country generated in the game.
-    This function ensures the player inputs a valid single character.
-    """
-    pass
 
-def validate_letter():
+def get_singular_letter():
+    """
+    Function to get a singular letter when the user enters data
+    """
+
+
+def validate_letter(word):
     """
     Validates whether the guessed letter is present in the secret country.
     This function checks if the guessed letter exists in the current country 
     being guessed and make sures the user entered a singular letter and no other character.
     """
-    
+    # Set to score correctly and incorrectly guessed letters
+    correct_guesses = set()
+    incorrect_guesses = set()
+    remaining_attempts = 6
+
+    # Loop until either the word is guessed or attempts run out
+    while len(correct_guesses) < len(set(word.replace(' ', ''))) and remaining_attempts > 0:
+        # Show current progress (letters guessed or underscores for unguessed letters)
+        current_display = ''.join([char if char in correct_guesses else '_' for char in word])
+        print(current_display)
+
+    letter = get_singular_letter()
+
+    # Check if the letter was already guessed
+    if letter in correct_guesses.union(incorrect_guesses):
+        print("You've already tried this letter. Try another one!")
+        continue
+
+    # If the guessed letter is in the word
+    if letter in word:
+        #Add Fore Color!!!!!
+        print(f"Correct! The letter '{letter}' is in the word.")
+        correct_guesses.add(letter)
+        print(f"Letters you've tried so far: {''.join(correct_guesses | incorrect_guesses)}\n")
+
+        if len(correct_guesses) == len(set(word.replace(' ', ''))):
+            print(f"Congratulations, you've won! The word was: {word}\n")
+            play_again()
+
+    # If the guessed letter is not in the word
+    else:
+        #Add Fore Color!!!
+        print(f"Wrong guess! The letter '{letter}' is not in the word.")
+        incorrect_guesses.add(letter) # Add letter to the set of incorrect guesses
+        remaining_attempts -= 1
+        print(f"Letters you've tried so far: {''.join(correct_guesses | incorrect_guesses)}\n")
+        print(hangman_game.game[remaining_attempts]) # Show hangman
+
+        # If the player has no attempts left, they lose
+        if remaining_attempts == 0:
+            print(f"Sorry, you lost. The word was: {word}\n")
+            play_again()
+
 
 def play_again():
     """
