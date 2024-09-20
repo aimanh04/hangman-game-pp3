@@ -80,7 +80,7 @@ def get_instructions():
             start_game()  # Start the game after instructions
             break
         else:
-            print("Please enter 'yes' to continue...")
+            print("Please enter 'yes' to continue...\n")
 
 def start_game():
     """
@@ -109,7 +109,7 @@ def continent():
                 " 1: America\n"
                 " 2: Asia\n"
                 " 3: Europe\n\n"
-                " Enter a number between 1 and 3: "))
+                " Enter a number between 1 and 3:\n"))
             if 1 <= user_choice <= 3:
                 return user_choice
             else:
@@ -145,7 +145,7 @@ def get_singular_letter():
     """
     while True:
         try:
-            letter = input('Enter a letter here: \n').upper()
+            letter = input('Enter a letter here:\n').upper()
             if len(letter) == 1 and letter.isalpha():
                 return letter
             else:
@@ -213,7 +213,7 @@ def play_again():
     while True:
         try:
             print("Do you want to play another round?\n")
-            restart_game = input("Y or N: ").upper()
+            restart_game = input("Y or N:\n").upper()
             if restart_game == "Y":
                 print("Let's Play!\n")
                 start_game()
