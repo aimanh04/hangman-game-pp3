@@ -61,8 +61,8 @@ def get_instructions():
         You have three options of continents to choose from.
         Your goal is to guess the country by the chosen continent.
 
-        If you guess a letter correctly, it will appear in the correct position in the word.
-        If you guess incorrectly, a part of the hangman's body will be added to the drawing.
+        If you guess correctly, the letter will appear in the word.
+        If you guess wrong, a part of the hangman will be added.
 
         If all parts of the hangman is shown you lose.
         If you guess the country correctly you win!
@@ -99,9 +99,15 @@ def continent():
             if 1 <= user_choice <= 3:
                 break
             else:
-                print('Ops! You entered an invalid number. Try again\n\n')
+                print(Fore.LIGHTRED_EX +
+              f"\n'Ops! You entered an invalid number. Try again.\n\n"
+              + "Please enter a number between 1 and 3...\n"
+              + Fore.RESET)
         except ValueError:
-            print('Please enter a number between 1 and 3.\n\n')
+            print(Fore.LIGHTRED_EX +
+              f"\nOps! You entered an invalid number. Try again.\n\n"
+              + "Please enter a number between 1 and 3...\n"
+              + Fore.RESET)
     return user_choice
 
 
@@ -131,7 +137,7 @@ def validate_letter():
     This function checks if the guessed letter exists in the current country 
     being guessed and make sures the user entered a singular letter and no other character.
     """
-    pass
+    
 
 def play_again():
     """
@@ -145,6 +151,7 @@ def play_again():
             restart_game = input("Y or N: ").upper()
             if restart_game == "Y":
                 print("Let's Play!\n")
+                continent()
                 break
             elif restart_game == "N":
                 print("Thank you for playing!\n")
