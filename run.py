@@ -100,7 +100,7 @@ def continent():
     This function presents a list of continents for the player to choose from and
     filter countries or other elements by the chosen continent.
     """
-    os.system('cls||clear')
+    clear_screen()
 
     while True:
         try:
@@ -111,7 +111,7 @@ def continent():
                 " 3: Europe\n\n"
                 " Enter a number between 1 and 3: "))
             if 1 <= user_choice <= 3:
-                break
+                return user_choice
             else:
                 print(Fore.LIGHTRED_EX +
               f"\n'Ops! You entered an invalid number. Try again.\n\n"
@@ -147,25 +147,22 @@ def get_singular_letter():
         try:
             letter = input('Enter a letter here: \n').upper()
             if len(letter) == 1 and letter.isalpha():
-                break
+                return letter
             else:
-                print('Try again. Please enter one letter at a time.\n\n')
+                print('Try again. Please enter one letter at a time.\n')
         except ValueError:
             print('Type one letter.\n\n')
     return letter
-
-
 
 def validate_letter(word):
     """
     Validates whether the guessed letter is present in the secret country.
     This function checks if the guessed letter exists in the current country 
-    being guessed and make sures the user entered a singular letter and no other character.
+    being guessed and ensures the user entered a singular letter and no other character.
     """
-    # Set to score correctly and incorrectly guessed letters
-    correct_guesses = set()
-    incorrect_guesses = set()
-    remaining_attempts = 6
+    correct_guesses = set()  # Set for correct guesses
+    incorrect_guesses = set()  # Set for incorrect guesses
+    remaining_attempts = 6  # Player starts with 6 attempts
 
     # Loop until either the word is guessed or attempts run out
     while len(correct_guesses) < len(set(word.replace(' ', ''))) and remaining_attempts > 0:
@@ -177,33 +174,34 @@ def validate_letter(word):
 
         # Check if the letter was already guessed
         if letter in correct_guesses.union(incorrect_guesses):
-            print("You've already tried this letter. Try another one!")
+            print(Fore.LIGHTYELLOW_EX + "You've already tried this letter. Try another one!" + Fore.RESET)
             continue
 
         # If the guessed letter is in the word
         if letter in word:
-            #Add Fore Color!!!!!
-            print(f"Correct! The letter '{letter}' is in the word.")
+            print(Fore.LIGHTGREEN_EX + f"Correct! The letter '{letter}' is in the word." + Fore.RESET)
             correct_guesses.add(letter)
             print(f"Letters you've tried so far: {''.join(correct_guesses | incorrect_guesses)}\n")
 
+            # Check if the entire word has been guessed
             if len(correct_guesses) == len(set(word.replace(' ', ''))):
-                print(f"Congratulations, you've won! The word was: {word}\n")
+                print(Fore.LIGHTGREEN_EX + f"Congratulations, you've won! The word was: {word}\n" + Fore.RESET)
                 play_again()
+                return  # Exit the current function after winning
 
         # If the guessed letter is not in the word
         else:
-            #Add Fore Color!!!
-            print(f"Wrong guess! The letter '{letter}' is not in the word.")
-            incorrect_guesses.add(letter) # Add letter to the set of incorrect guesses
+            print(Fore.LIGHTRED_EX + f"Wrong guess! The letter '{letter}' is not in the word." + Fore.RESET)
+            incorrect_guesses.add(letter)  # Add letter to the set of incorrect guesses
             remaining_attempts -= 1
             print(f"Letters you've tried so far: {''.join(correct_guesses | incorrect_guesses)}\n")
-            print(hangman_game.game[remaining_attempts]) # Show hangman
+            print(hangman_game.game[remaining_attempts])  # Show hangman progress
 
             # If the player has no attempts left, they lose
             if remaining_attempts == 0:
-                print(f"Sorry, you lost. The word was: {word}\n")
+                print(Fore.LIGHTRED_EX + f"Sorry, you lost. The word was: {word}\n" + Fore.RESET)
                 play_again()
+                return  # Exit the current function after losing
 
 
 def play_again():
@@ -218,23 +216,23 @@ def play_again():
             restart_game = input("Y or N: ").upper()
             if restart_game == "Y":
                 print("Let's Play!\n")
-                continent()
+                start_game()
                 break
             elif restart_game == "N":
                 print("Thank you for playing!\n")
                 break
+            else:
+                print("Please Enter: Y or N\n")
         except ValueError:
-            print("Please Enter: Y or N\n")
+            print("Please Enter: Y or N\n")        
 
 
 def main():
     """
-    The main function that runs the overall game.
-    This function calls all other necessary functions such as the game menu, continent
-    selection, country generation, letter guessing, and checking for win/loss conditions.
-    It keeps the game running in a loop until the player chooses to quit.
+    The main function that runs the entire game process.
     """
     game_menu()
     
 
-main()
+if __name__ == "__main__":
+    main()
