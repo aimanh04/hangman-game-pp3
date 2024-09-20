@@ -1,11 +1,11 @@
 import random
+import os
+import colorama
+from colorama import Fore
 import american_countries
 import asian_countries
 import european_countries
 import hangman_game
-import os
-import colorama
-from colorama import Fore
 
 # Function to clear terminal screen
 def clear_screen():
@@ -13,8 +13,8 @@ def clear_screen():
 
 def game_menu():
     """
-    Function to display when you first run the program it display game menu screen.
-    The menu has the options to display instructions or play the game by choosing continent.
+    Function to display when you first run the program it displays the game menu screen.
+    The menu has the options to display instructions or play the game by choosing a continent.
     """
     print(r"""
      _   _    _    _   _  ____ __  __    _    _   _ 
@@ -25,13 +25,13 @@ def game_menu():
  / ___|  / \  |  \/  | ____|                    
 | |  _  / _ \ | |\/| |  _|                      
 | |_| |/ ___ \| |  | | |___                     
- \____/_/   \_\_|  |_|_____|                                               
+ \____/_/   \_\_|  |_|_____|
     """)
     print("\nAre you ready to play?")
     print(f"\n1. Play The Game! \n2. How To Play")
 
     valid_choice = False
-    while valid_choice is False:
+    while not valid_choice:
         choice = input("\nEnter your choice (1 or 2):\n")
         valid_choice = menu_validate_choice(choice, ["1", "2"])
 
@@ -42,23 +42,20 @@ def game_menu():
 
 def menu_validate_choice(data, validate_menu):
     """
-    Validate the choice from user in menu when they enter an integer
-    between 1 or 2. Following Try statement will raise a error if the
-    entered data isn't a integer or a number between 1 or 2.
+    Validate the choice from the user in the menu when they enter an integer
+    between 1 or 2. The following try statement will raise an error if the
+    entered data isn't an integer or a number between 1 and 2.
     """
     try:
         if data not in validate_menu:
-            raise ValueError(
-                f"You've entered: {data}"
-            )
+            raise ValueError(f"You've entered: {data}")
     except ValueError as e:
-            print(Fore.LIGHTRED_EX +
+        print(Fore.LIGHTRED_EX +
               f"\nInvalid data: {e}\n"
               + "Please enter again between 1 and 2...\n"
               + Fore.RESET)
-            return False
-    else:
-            return True
+        return False
+    return True
 
 def get_instructions():
     clear_screen()
@@ -70,10 +67,10 @@ def get_instructions():
         If you guess correctly, the letter will appear in the word.
         If you guess wrong, a part of the hangman will be added.
 
-        If all parts of the hangman is shown you lose.
-        If you guess the country correctly you win!
+        If all parts of the hangman are shown, you lose.
+        If you guess the country correctly, you win!
     """)
-    # While loop to make sure user enters yes to continue to the next page
+    # While loop to make sure the user enters 'yes' to continue to the next page
     while True:
         raw_input = input("Enter 'yes' to continue to the game:\n").lower()
         if raw_input == "yes":
@@ -84,7 +81,7 @@ def get_instructions():
 
 def start_game():
     """
-    This function handles the continent selection, country generation
+    This function handles the continent selection, country generation,
     and starts the letter guessing process.
     """
     clear_screen()
@@ -92,11 +89,9 @@ def start_game():
     word = generate_country(user_choice)
     validate_letter(word)
 
-
-
 def continent():
     """
-    Function to manage the selection of continent by user to play the game.
+    Function to manage the selection of the continent by the user to play the game.
     This function presents a list of continents for the player to choose from and
     filter countries or other elements by the chosen continent.
     """
@@ -114,45 +109,37 @@ def continent():
                 return user_choice
             else:
                 print(Fore.LIGHTRED_EX +
-              f"\n'Ops! You entered an invalid number. Try again.\n\n"
-              + "Please enter a number between 1 and 3...\n"
-              + Fore.RESET)
+                      f"\n'Ops! You entered an invalid number. Try again.\n\n"
+                      + "Please enter a number between 1 and 3...\n"
+                      + Fore.RESET)
         except ValueError:
             print(Fore.LIGHTRED_EX +
-              f"\nOps! You entered an invalid number. Try again.\n\n"
-              + "Please enter a number between 1 and 3...\n"
-              + Fore.RESET)
-    return user_choice
-
-
+                  f"\nOps! You entered an invalid number. Try again.\n\n"
+                  + "Please enter a number between 1 and 3...\n"
+                  + Fore.RESET)
 
 def generate_country(number):
     """
-    Function to generate a random country from the chosen continent by user.
+    Function to generate a random country from the chosen continent by the user.
     The function randomly chooses a country from the continent files that the player has to guess in the game.
     """
     if number == 1:
         return random.choice(american_countries.american_countries).upper()
-    if number == 2:
+    elif number == 2:
         return random.choice(asian_countries.asian_countries).upper()
-    if number == 3:
+    elif number == 3:
         return random.choice(european_countries.european_countries).upper()
-
 
 def get_singular_letter():
     """
-    Function to get a singular letter when the user enters data
+    Function to get a singular letter when the user enters data.
     """
     while True:
-        try:
-            letter = input('Enter a letter here:\n').upper()
-            if len(letter) == 1 and letter.isalpha():
-                return letter
-            else:
-                print('Try again. Please enter one letter at a time.\n')
-        except ValueError:
-            print('Type one letter.\n\n')
-    return letter
+        letter = input('Enter a letter here:\n').upper()
+        if len(letter) == 1 and letter.isalpha():
+            return letter
+        else:
+            print('Try again. Please enter one letter at a time.\n')
 
 def validate_letter(word):
     """
@@ -203,7 +190,6 @@ def validate_letter(word):
                 play_again()
                 return  # Exit the current function after losing
 
-
 def play_again():
     """
     Asks the player if they want to play another round after the game ends.
@@ -224,15 +210,13 @@ def play_again():
             else:
                 print("Please Enter: Y or N\n")
         except ValueError:
-            print("Please Enter: Y or N\n")        
-
+            print("Please Enter: Y or N\n")
 
 def main():
     """
     The main function that runs the entire game process.
     """
     game_menu()
-    
 
 if __name__ == "__main__":
     main()
