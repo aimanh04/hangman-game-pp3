@@ -129,6 +129,17 @@ def get_singular_letter():
     """
     Function to get a singular letter when the user enters data
     """
+    while True:
+        try:
+            letter = input('Enter a letter here: \n').upper()
+            if len(letter) == 1 and letter.isalpha():
+                break
+            else:
+                print('Try again. Please enter one letter at a time.\n\n')
+        except ValueError:
+            print('Type one letter.\n\n')
+    return letter
+
 
 
 def validate_letter(word):
