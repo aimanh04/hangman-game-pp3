@@ -71,6 +71,21 @@ The Hangman Game is a simple word-guessing game where the player has to guess th
 
 ## IMPORTED LIBRARIES
 
+#### 1. random:
+- Used for selecting a random country from the list based on the chosen continent.
+
+#### 2. os:
+- Enables the clearing of the terminal screen for a cleaner visual experience.
+
+#### 3. colorama:
+- Adds colored text output to improve user feedback (e.g., red for incorrect guesses, green for correct ones.)
+
+#### 4. american_countries, asian_countries, european_countries:
+- Custom modules that contain lists of countries by continent.
+
+#### 5. hangman_game:
+- A custom module that contain the drawings of the hangman game.
+
 ## TECHNOLOGIES USED
 
 ### Languages
