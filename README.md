@@ -107,4 +107,33 @@ The Hangman Game is a simple word-guessing game where the player has to guess th
 
 ## DEPLOYMENT
 
+### Steps for deployment on Heroku
+1. Go to the [Heroku](https://dashboard.heroku.com/) website.
+2. Click on the "Create new app" option on the dashboard.
+3. Give it your project name, select your region and go on the "Create app" option.
+4. Click the settings tab.
+5. Go to "Reveal Config Vars" and store all your sensitive data such as creds.json & port data.
+6. Set the buildbacks to Python & Nodejs in that order.
+7. Click on the deploy tab.
+8. Select Github as a deployment method.
+9. Connect it to your Github.
+10. Authorize the correct repo to connect.
+11. Choose to either "Enable Automatic" or on "Deploy Branch" to deploy the project.
+12. Go on "View" to see your live project.
+
+### Forking the Github Repository
+The steps to fork the github repository are:
+1. Log in to your [GitHub](https://github.com/).
+2. Go to the repository for Aimanh04-Hangman-Game.
+3. Click fork on the right hand side of the screen.
+
+### Making a local clone
+To clone this repository, do the following steps:
+1. Log in to your [GitHub](https://github.com/).
+2. Go to the repository for this project [Aimanh04-Hangman-Game](https://aimanh04-hangman-game-pp3-fd9d34e261c1.herokuapp.com/).
+3. Click on the code button and select whether you would like to clone with HTTPS, SSH or GitHub CLI and then copy the URL to your clipboard.
+4. Open the terminal in your selected code editor and change the current working directory to the location of where you want the cloned directory.
+5. Type "git clone" into the terminal, paste the link you copied and press enter.
+
+
 ## CREDITS
