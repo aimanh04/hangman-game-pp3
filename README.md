@@ -40,6 +40,31 @@ The Hangman Game is a simple word-guessing game where the player has to guess th
 
 ## USER EXPERIENCE
 
+### User Stories:
+#### First-Time User Goals
+- I want to play a word guessing quiz - Hangman
+- I want clear instructions on how to play.
+- I want an easy way to start the game or view instructions.
+- I want to choose from different continents for variety.
+- I want feedback on whether my guesses are correct or incorrect.
+- I want the game to prevent repeated guesses.
+
+#### Returning User Goals
+- I want to skip instructions and start the game quickly.
+- I want to restart the game easily after each round.
+- I want smooth gameplay without crashes or errors.
+
+### Visual Design:
+- **Logo**: A stylized art logo welcomes users when the game launches, creating an engaging start.
+
+- **Feedback Colors**: The game uses color-coded text for feedback.
+    - **Green** for correct guesses.
+    - **Red** for incorrect guesses.
+    - **Yellow** for repeated guesses.
+
+- **Clear Game Progress**: The current state of the guessed country and the hangman drawing is displayed after each guess, ensuring the player can easily track their progress.
+
+
 ## FLOW CHART
 
 ## FEATURES
