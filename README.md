@@ -73,6 +73,21 @@ The Hangman Game is a simple word-guessing game where the player has to guess th
 
 ## TECHNOLOGIES USED
 
+### Languages
+
+- Python
+
+### Frameworks, Libraries and Programes used
+
+- [GitHub](https://GitHub.com/) - To save and store files for the project
+- [Gitpod](https://gitpod.io/) - To use as workspace to code project
+- [Chrome Lighthouse](https://developers.google.com/web/tools/lighthouse) - To test the websites performance and accesibility
+- [Am I Responsive](https://ui.dev/amiresponsive) - Used to test responsivness
+- [Lucid Chart](https://www.lucidchart.com/pages/) - Used to create a flow chart.
+- [PEP8 CI Python Linter](https://pep8ci.herokuapp.com/) - Used to validate my python code.
+- [Heroku](https://dashboard.heroku.com/) - Used to deploy python project.
+- Code Institute's Gitpod template to generate IDE workspace.
+
 ## TESTING
 
 ## DEPLOYMENT
