@@ -5,6 +5,18 @@ Welcome to the **Hangman Game**! This is a python-based command-line game where 
 Link to the live project: [Hangman Game](https://aimanh04-hangman-game-pp3-fd9d34e261c1.herokuapp.com/)
 ![Hangman Game Am I Responsive Image](readme-images/hangman-responsive.png)
 
+## Table of Contents
+
+- [How TO PLAY](#how-to-play)
+- [USER EXPERIENCE](#user-experience)
+- [FLOW CHART](#flow-chart)
+- [FEATURES](#features)
+- [IMPORTED LIBRARIES](#imported-libraries)
+- [TECHNOLOGIES USED](#technologies-used)
+- [TESTING](#testing)
+- [DEPLOYMENT](#deployment)
+- [CREDITS](#credits)
+
 ## HOW TO PLAY
 
 The Hangman Game is a simple word-guessing game where the player has to guess the hidden country name letter by letter. The game revolves around a "hangman" figure, and with each incorrect guess, a part of the figure will be drawn. If the figure is fully drawn before the word is guessed, the player loses. Here's a step-by-step breakdown:
