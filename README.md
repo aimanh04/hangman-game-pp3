@@ -137,3 +137,15 @@ To clone this repository, do the following steps:
 
 
 ## CREDITS
+
+### Special Thanks To
+
+- **Youtube** and **Wikipedia** for explanation and details to the Hangman game.
+
+- **Code Institute** for providing the foundational python knowledge.
+
+- **Stack Overflow** for helpful solutions regarding python code and error handling.
+
+- **W3Schools** for helpful solutions regarding python code and error handling.
+
+- **ASCII Art** for game title.
