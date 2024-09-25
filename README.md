@@ -5,7 +5,7 @@ Welcome to the **Hangman Game**! This is a python-based command-line game where 
 Link to the live project: [Hangman Game](https://aimanh04-hangman-game-pp3-fd9d34e261c1.herokuapp.com/)
 ![Hangman Game Am I Responsive Image](readme-images/hangman-responsive.png)
 
-## Table of Contents
+## TABLE OF CONTENTS
 
 - [How TO PLAY](#how-to-play)
 - [USER EXPERIENCE](#user-experience)
@@ -80,6 +80,60 @@ The Hangman Game is a simple word-guessing game where the player has to guess th
 ## FLOW CHART
 
 ## FEATURES
+
+### Game Menu
+- Offers two options:
+    - **Play The Game**: Starts the hangman game.
+    - **How To Play**: Provides instructions for new players.
+![Game Menu Image](readme-images/game-menu.png)
+
+### Continent Selection
+- Players select from **America**, **Asia**, or **Europe**, narrowing down the countries.
+- Input is validated to ensure only valid choices (1-3) are accepted.
+![Continent Selection Image](readme-images/continent-selection.png)
+
+### Word Generation
+- A random country is selected from the chosen continent.
+- All country names are displayed in uppercase for consistency.
+
+### Letter Guessing
+- Players input a single letter per turn, with validation to prevent invalid characters.
+- **Correct guesses** reveal letters, and **incorrect guesses** add parts to the hangman drawing.
+![Correct Answer Image](readme-images/correct-img.png)
+![Incorrect Answer Image](readme-images/incorrect-img.png)
+
+### Hangman Drawing
+- A visual hangman is progressively drawn as incorrect guesses are made, with 6 total parts.
+
+![Hangman Drawing](readme-images/hangman1.png)
+![Hangman Drawing](readme-images/hangman2.png)
+![Hangman Drawing](readme-images/hangman3.png)
+![Hangman Drawing](readme-images/hangman4.png)
+![Hangman Drawing](readme-images/hangman5.png)
+![Hangman Drawing](readme-images/hangman6.png)
+
+### Winning and Losing
+- **Win**: All letters guessed correctly before the hangman is fully drawn.
+- **Lose**: Hangman fully drawn (6 incorrect guesses), with the word revealed.
+- Option to play again or exit after each round.
+
+### Colors for Feedback
+- Uses **colorama** for color-coded messages:
+    - **Green** for correct guesses and winning.
+    - **Red** for incorrect guesses and losing.
+    - **Yellow** for invalid inputs.
+
+### Instructions
+- Step-by-step game instructions are provided for easy understanding.
+![Instructions Image](readme-images/instructions-image.png)
+
+### Error Handling
+- Handles invalid inputs gracefully, prompting users to correct mistakes.
+
+### User Experience
+- Clears the screen between game stages for a clean and focused interface.
+- Simple, engaging gameplay with nostalgic appeal.
+
 
 ## IMPORTED LIBRARIES
 
