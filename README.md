@@ -9,7 +9,6 @@ Link to the live project: [Hangman Game](https://aimanh04-hangman-game-pp3-fd9d3
 
 - [How TO PLAY](#how-to-play)
 - [USER EXPERIENCE](#user-experience)
-- [FLOW CHART](#flow-chart)
 - [FEATURES](#features)
 - [IMPORTED LIBRARIES](#imported-libraries)
 - [TECHNOLOGIES USED](#technologies-used)
@@ -76,8 +75,6 @@ The Hangman Game is a simple word-guessing game where the player has to guess th
 
 - **Clear Game Progress**: The current state of the guessed country and the hangman drawing is displayed after each guess, ensuring the player can easily track their progress.
 
-
-## FLOW CHART
 
 ## FEATURES
 
@@ -164,7 +161,6 @@ The Hangman Game is a simple word-guessing game where the player has to guess th
 - [Gitpod](https://gitpod.io/) - To use as workspace to code project
 - [Chrome Lighthouse](https://developers.google.com/web/tools/lighthouse) - To test the websites performance and accesibility
 - [Am I Responsive](https://ui.dev/amiresponsive) - Used to test responsivness
-- [Lucid Chart](https://www.lucidchart.com/pages/) - Used to create a flow chart.
 - [PEP8 CI Python Linter](https://pep8ci.herokuapp.com/) - Used to validate my python code.
 - [Heroku](https://dashboard.heroku.com/) - Used to deploy python project.
 - Code Institute's Gitpod template to generate IDE workspace.
